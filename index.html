@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -196,6 +197,51 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* Gear Icon and Sidebar Styles */
+        .gear-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #8b4f2a;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px; /* Hidden by default */
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: right 0.3s ease;
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .sidebar.open {
+            right: 0; /* Show sidebar */
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-body {
+            padding: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -217,7 +263,7 @@
                 <div class="mb-3">
                     <div class="input-group">
                         <span class="input-group-text input-group-text-custom"><i class="fas fa-user"></i></span>
-                        <input type="text" class="form-control form-control-custom" placeholder="User ID" id="userId"
+                        <input type="text" class="form-control form-control-custom" placeholder="User  ID" id="userId"
                             required />
                     </div>
                 </div>
@@ -241,6 +287,39 @@
                     LOGIN <i class="fas fa-key"></i>
                 </button>
             </form>
+        </div>
+    </div>
+
+    <!-- Gear Icon -->
+    <div class="gear-icon" onclick="toggleSidebar()">
+        <i class="fas fa-cog fa-spin"></i>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <div class="card">
+            <a href="https://rishabh26-design.github.io/Login_VSK/">
+            <img src="asset/images/VSK Login_1.jpg" alt="Login" />
+            <div class="card-body">Login 1</div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://rishabh26-design.github.io/Login_VSK_2/">
+            <img src="asset/images/VSK Login_2.jpg" alt="Login" />
+            <div class="card-body">Login 2</div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://rishabh26-design.github.io/Login_VSK_3/">
+            <img src="asset/images/VSK Login_3.jpg" alt="Login" />
+            <div class="card-body">Login 3</div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://rishabh26-design.github.io/Login_VSK_4/"></a>
+            <img src="asset/images/VSK_Login_4.jpg" alt="Login" />
+            <div class="card-body">Login 4</div>
+            </a>
         </div>
     </div>
 
@@ -271,6 +350,11 @@
                 document.getElementById('captchaInput').focus();
             }
             return false;
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
         }
 
         window.onload = generateCaptcha;
